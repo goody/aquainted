@@ -1,0 +1,61 @@
+/* Design tokens — light theme (default) */
+:root {
+  --bg: #f9fafb;
+  --bg-alt: #ffffff;
+  --fg: #111827;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --chip-bg: #e0e7ff;
+  --chip-fg: #3730a3;
+  --chip-border: #c7d2fe;
+  --chip-active-bg: #4f46e5;
+  --chip-active-fg: #ffffff;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-fg: #ffffff;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-fg: #ffffff;
+  --success: #16a34a;
+  --nav-bg: #ffffff;
+  --nav-border: #e5e7eb;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-focus: #4f46e5;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius-chip: 10px;
+  --radius-card: 12px;
+  --radius-modal: 16px;
+}
+
+[data-theme='dark'] {
+  --bg: #111827;
+  --bg-alt: #1f2937;
+  --fg: #f9fafb;
+  --muted: #9ca3af;
+  --card: #1f2937;
+  --border: #374151;
+  --chip-bg: #312e81;
+  --chip-fg: #c7d2fe;
+  --chip-border: #4338ca;
+  --chip-active-bg: #6366f1;
+  --chip-active-fg: #ffffff;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-fg: #ffffff;
+  --danger: #ef4444;
+  --danger-hover: #f87171;
+  --danger-fg: #ffffff;
+  --success: #22c55e;
+  --nav-bg: #1f2937;
+  --nav-border: #374151;
+  --input-bg: #1f2937;
+  --input-border: #4b5563;
+  --input-focus: #6366f1;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}

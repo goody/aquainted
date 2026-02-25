@@ -1,0 +1,68 @@
+.facet-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--radius-chip);
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  border: 1px solid var(--chip-border);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  user-select: none;
+}
+
+.facet-chip:hover {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+.facet-chip:active {
+  opacity: 0.85;
+}
+
+.facet-chip--active {
+  background: var(--chip-active-bg);
+  color: var(--chip-active-fg);
+  border-color: var(--chip-active-bg);
+}
+
+.facet-chip--filter {
+  height: 28px;
+  padding: 0 8px;
+}
+
+.facet-chip--detail {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 0.85rem;
+}
+
+.chip-remove,
+.chip-pin {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-size: 1rem;
+  color: inherit;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+}
+
+.chip-remove:hover,
+.chip-pin:hover {
+  opacity: 1;
+}
+
+.chip-pin--active {
+  opacity: 1;
+  color: #fbbf24;
+}

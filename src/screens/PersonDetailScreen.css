@@ -1,0 +1,92 @@
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.back-btn:hover { opacity: 0.8; }
+
+.detail-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.detail-edit-btn,
+.detail-delete-btn {
+  font-size: 0.85rem;
+  padding: 7px 12px;
+}
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.detail-notes {
+  color: var(--fg);
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.detail-meta {
+  font-size: 0.8rem;
+}
+
+.detail-facets-section {
+  margin-top: 8px;
+}
+
+.detail-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.detail-facet-group {
+  margin-bottom: 16px;
+}
+
+.detail-group-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.detail-facet-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 48px 16px;
+}

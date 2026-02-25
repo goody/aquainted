@@ -1,0 +1,38 @@
+.person-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  box-shadow: var(--shadow-sm);
+}
+
+.person-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.person-card:active {
+  opacity: 0.92;
+}
+
+.person-card-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.person-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.person-card-more {
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0 4px;
+}

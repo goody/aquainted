@@ -1,0 +1,149 @@
+.edit-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.edit-save-btn {
+  font-size: 0.9rem;
+  padding: 8px 14px;
+}
+
+.edit-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.edit-notes {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.edit-facet-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.edit-type-input {
+  max-width: 130px;
+  flex-shrink: 0;
+}
+
+.edit-suggestions {
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.edit-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--fg);
+}
+.edit-suggestion:hover { background: var(--chip-bg); }
+
+.edit-facet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.edit-facet-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 8px;
+}
+
+.edit-facet-label {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--chip-fg);
+  font-weight: 500;
+}
+
+.edit-facet-type {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* Reuse pin/remove from QuickAddModal */
+.qa-pin-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--muted);
+  padding: 0;
+  line-height: 1;
+}
+.qa-pin-btn:hover { color: #fbbf24; }
+.qa-pin-btn--active { color: #fbbf24; }
+
+.qa-remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--muted);
+  padding: 0;
+  line-height: 1;
+}
+.qa-remove-btn:hover { color: var(--danger); }
+
+/* Reuse from detail */
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.back-btn:hover { opacity: 0.8; }
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-type {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
