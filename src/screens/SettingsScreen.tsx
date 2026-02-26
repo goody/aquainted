@@ -137,7 +137,7 @@ export function SettingsScreen() {
         </section>
 
         <div className="settings-footer muted">
-          <p>Aquaintance v0.1.0</p>
+          <p>Acquainted v0.1.0</p>
           <p>All data stored locally in your browser.</p>
         </div>
       </div>

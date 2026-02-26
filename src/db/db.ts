@@ -7,7 +7,7 @@ class AquaintanceDB extends Dexie {
   links!: Table<Link, [string, string]>
 
   constructor() {
-    super('aquaintance')
+    super('acquainted')
 
     this.version(1).stores({
       // Primary key + indexed fields

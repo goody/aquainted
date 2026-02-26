@@ -36,7 +36,7 @@ export function HomeScreen() {
     <div className="screen home-screen">
       <div className="screen-header">
         <div className="home-header-row">
-          <h1 className="home-title">Aquaintance</h1>
+          <h1 className="home-title">Acquainted</h1>
           <div className="home-header-actions">
             <button
               className="sort-btn"

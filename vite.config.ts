@@ -15,8 +15,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
-        name: 'Aquaintance',
-        short_name: 'Aquaintance',
+        name: 'Acquainted',
+        short_name: 'Acquainted',
         description: 'People I met — tag, search, remember',
         theme_color: '#4f46e5',
         background_color: '#ffffff',
