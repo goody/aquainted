@@ -1,6 +1,7 @@
 import { db } from '@/db/db'
 import type { Facet } from '@/db/types'
 import { normalizeFacet } from '@/services/facetNormalize'
+import { generateId } from '@/utils/uuid'
 
 export const FacetRepo = {
   async findOrCreate(label: string, type?: string): Promise<Facet> {
@@ -9,7 +10,7 @@ export const FacetRepo = {
     if (existing) return existing
 
     const facet: Facet = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       label: label.trim(),
       type: type?.trim() || undefined,
       normalizedKey,

@@ -3,6 +3,7 @@ import { PeopleRepo } from '@/repos/PeopleRepo'
 import { FacetRepo } from '@/repos/FacetRepo'
 import { LinkRepo } from '@/repos/LinkRepo'
 import { getRecentFacetIds, recordFacetUsed } from '@/hooks/useRecentFacets'
+import { generateId } from '@/utils/uuid'
 import type { Facet } from '@/db/types'
 import './QuickAddModal.css'
 
@@ -24,6 +25,7 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
   const [recentFacets, setRecentFacets] = useState<Facet[]>([])
   const [addAnother, setAddAnother] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [showMore, setShowMore] = useState(false)
   const [notes, setNotes] = useState('')
   const nameRef = useRef<HTMLInputElement>(null)
@@ -31,7 +33,6 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
 
   useEffect(() => {
     nameRef.current?.focus()
-    // Load recent facets
     const ids = getRecentFacetIds()
     if (ids.length > 0) {
       FacetRepo.getByIds(ids).then((facets) => {
@@ -54,7 +55,10 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
     setFacetInput('')
     setFacetSuggestions([])
     recordFacetUsed(facet.id)
-    facetInputRef.current?.focus()
+    // Don't aggressively re-focus on mobile — let the user tap the input again
+    if (window.innerWidth >= 480) {
+      facetInputRef.current?.focus()
+    }
   }
 
   const togglePin = (facetId: string) => {
@@ -70,17 +74,17 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
   const save = async () => {
     if (!name.trim()) { nameRef.current?.focus(); return }
     setSaving(true)
+    setError(null)
     try {
       const now = Date.now()
 
-      // Determine pinned facets: explicitly pinned, or auto-pin first 2–3
       let pinnedIds = addedFacets.filter((e) => e.pinned).map((e) => e.facet.id)
       if (pinnedIds.length === 0 && addedFacets.length > 0) {
         pinnedIds = addedFacets.slice(0, 3).map((e) => e.facet.id)
       }
 
       const person = {
-        id: crypto.randomUUID(),
+        id: generateId(),
         name: name.trim(),
         notes: notes.trim() || undefined,
         createdAt: now,
@@ -104,6 +108,8 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
       } else {
         onClose()
       }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to save. Please try again.')
     } finally {
       setSaving(false)
     }
@@ -143,6 +149,28 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
             onKeyDown={(e) => e.key === 'Enter' && facetInputRef.current?.focus()}
           />
 
+          {/* Added facets shown ABOVE the input so they stay visible on mobile */}
+          {addedFacets.length > 0 && (
+            <div className="qa-added-facets">
+              {addedFacets.map(({ facet, pinned }) => (
+                <div key={facet.id} className="qa-facet-entry">
+                  <span className="qa-facet-label">{facet.label}</span>
+                  <button
+                    className={`qa-pin-btn${pinned ? ' qa-pin-btn--active' : ''}`}
+                    onClick={() => togglePin(facet.id)}
+                    title={pinned ? 'Unpin' : 'Pin to card'}
+                    aria-label={pinned ? 'Unpin facet' : 'Pin facet'}
+                  >★</button>
+                  <button
+                    className="qa-remove-btn"
+                    onClick={() => removeFacetEntry(facet.id)}
+                    aria-label={`Remove ${facet.label}`}
+                  >×</button>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="qa-facet-section">
             <div className="qa-facet-input-row">
               <input
@@ -178,27 +206,6 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
             )}
           </div>
 
-          {addedFacets.length > 0 && (
-            <div className="qa-added-facets">
-              {addedFacets.map(({ facet, pinned }) => (
-                <div key={facet.id} className="qa-facet-entry">
-                  <span className="qa-facet-label">{facet.label}</span>
-                  <button
-                    className={`qa-pin-btn${pinned ? ' qa-pin-btn--active' : ''}`}
-                    onClick={() => togglePin(facet.id)}
-                    title={pinned ? 'Unpin' : 'Pin to card'}
-                    aria-label={pinned ? 'Unpin facet' : 'Pin facet'}
-                  >★</button>
-                  <button
-                    className="qa-remove-btn"
-                    onClick={() => removeFacetEntry(facet.id)}
-                    aria-label={`Remove ${facet.label}`}
-                  >×</button>
-                </div>
-              ))}
-            </div>
-          )}
-
           {recentFacets.length > 0 && addedFacets.length < 8 && (
             <div className="qa-recents">
               <span className="qa-recents-label">Recent:</span>
@@ -231,6 +238,8 @@ export function QuickAddModal({ onClose, onSaved }: Props) {
             {showMore ? '▲ Less' : '▼ More (notes)'}
           </button>
         </div>
+
+        {error && <div className="qa-error">{error}</div>}
 
         <div className="qa-footer">
           <label className="qa-add-another">

@@ -2,6 +2,15 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  /* Prevent modal itself from scrolling; only qa-fields scrolls */
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.qa-fields {
+  overflow-y: auto;
+  flex: 1;
+  padding-bottom: 4px;
 }
 
 .modal-header {
@@ -185,10 +194,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
-  padding-top: 16px;
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding: 16px 20px 20px;
   border-top: 1px solid var(--border);
   gap: 12px;
+  /* Compensate for removed modal padding-bottom */
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
 }
 
 .qa-add-another {
@@ -204,4 +218,15 @@
 .qa-footer-btns {
   display: flex;
   gap: 8px;
+}
+
+.qa-error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  color: var(--danger);
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }

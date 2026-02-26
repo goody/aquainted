@@ -5,6 +5,7 @@ import { PeopleRepo } from '@/repos/PeopleRepo'
 import { FacetRepo } from '@/repos/FacetRepo'
 import { LinkRepo } from '@/repos/LinkRepo'
 import { recordFacetUsed } from '@/hooks/useRecentFacets'
+import { generateId } from '@/utils/uuid'
 import './AddEditPersonScreen.css'
 
 interface FacetEntry {
@@ -106,7 +107,7 @@ export function AddEditPersonScreen() {
         navigate(`/person/${id}`)
       } else {
         const person = {
-          id: crypto.randomUUID(),
+          id: generateId(),
           name: name.trim(),
           notes: notes.trim() || undefined,
           createdAt: now,
