@@ -86,6 +86,7 @@ export function PersonDetailScreen() {
 
       <div className="screen-body detail-body">
         <h1 className="detail-name">{person.name}</h1>
+        {person.reminder && <p className="detail-reminder">{person.reminder}</p>}
         {person.notes && <p className="detail-notes">{person.notes}</p>}
         <p className="detail-meta muted">
           Added {new Date(person.createdAt).toLocaleDateString()}

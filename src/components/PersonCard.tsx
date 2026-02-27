@@ -37,7 +37,10 @@ export function PersonCard({ person, onFacetClick }: Props) {
 
   return (
     <div className="person-card" onClick={() => navigate(`/person/${person.id}`)}>
-      <div className="person-card-name">{person.name}</div>
+      <div className="person-card-header">
+        <div className="person-card-name">{person.name}</div>
+        {person.reminder && <div className="person-card-reminder">{person.reminder}</div>}
+      </div>
       {pinnedFacets.length > 0 && (
         <div className="person-card-chips">
           {pinnedFacets.map((f) => (

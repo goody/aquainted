@@ -1,6 +1,7 @@
 export interface Person {
   id: string
   name: string
+  reminder?: string
   notes?: string
   createdAt: number
   updatedAt: number

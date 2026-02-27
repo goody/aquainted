@@ -19,6 +19,7 @@ export function AddEditPersonScreen() {
   const isEdit = !!id
 
   const [name, setName] = useState('')
+  const [reminder, setReminder] = useState('')
   const [notes, setNotes] = useState('')
   const [facetEntries, setFacetEntries] = useState<FacetEntry[]>([])
   const [facetInput, setFacetInput] = useState('')
@@ -36,6 +37,7 @@ export function AddEditPersonScreen() {
       ])
       if (!person) { navigate('/'); return }
       setName(person.name)
+      setReminder(person.reminder ?? '')
       setNotes(person.notes ?? '')
       if (facetIds.length > 0) {
         const facets = await FacetRepo.getByIds(facetIds)
@@ -91,6 +93,7 @@ export function AddEditPersonScreen() {
       if (isEdit) {
         await PeopleRepo.update(id!, {
           name: name.trim(),
+          reminder: reminder.trim() || undefined,
           notes: notes.trim() || undefined,
           pinnedFacetIds: pinnedIds,
           updatedAt: now,
@@ -109,6 +112,7 @@ export function AddEditPersonScreen() {
         const person = {
           id: generateId(),
           name: name.trim(),
+          reminder: reminder.trim() || undefined,
           notes: notes.trim() || undefined,
           createdAt: now,
           updatedAt: now,
@@ -162,6 +166,17 @@ export function AddEditPersonScreen() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoFocus={!isEdit}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Reminder</label>
+          <input
+            className="input"
+            type="text"
+            placeholder={'Quick visual cue, e.g. "red hair" or "met at SxSW"'}
+            value={reminder}
+            onChange={(e) => setReminder(e.target.value)}
           />
         </div>
 
